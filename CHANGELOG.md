@@ -1,3 +1,5 @@
+### add style_models folder path
+
 # [3.4.0](https://github.com/blib-la/runpod-worker-comfy/compare/3.3.0...3.4.0) (2024-11-19)
 
 
