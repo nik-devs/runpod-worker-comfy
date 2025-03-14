@@ -17,7 +17,6 @@ RUN apt-get update && apt-get install -y \
     git \
     wget \
     libgl1 \
-    libglib2.0-0 \  # for rmbg Custom Node
     && ln -sf /usr/bin/python3.10 /usr/bin/python \
     && ln -sf /usr/bin/pip3 /usr/bin/pip
 
@@ -51,14 +50,6 @@ ADD *snapshot*.json /
 
 # Restore the snapshot to install custom nodes
 RUN /restore_snapshot.sh
-
-# Install Custom Node
-WORKDIR /comfyui/custom_nodes
-RUN git clone https://github.com/john-mnz/ComfyUI-Inspyrenet-Rembg.git \
-    && cd ComfyUI-Inspyrenet-Rembg \
-    && pip install -r requirements.txt
-
-WORKDIR /
 
 # Start container
 CMD ["/start.sh"]
