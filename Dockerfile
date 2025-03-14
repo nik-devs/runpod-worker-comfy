@@ -51,6 +51,14 @@ ADD *snapshot*.json /
 # Restore the snapshot to install custom nodes
 RUN /restore_snapshot.sh
 
+# Install Custom Node
+WORKDIR /comfyui/custom_nodes
+RUN git clone https://github.com/john-mnz/ComfyUI-Inspyrenet-Rembg.git \
+    && cd ComfyUI-Inspyrenet-Rembg \
+    && pip install -r requirements.txt
+
+WORKDIR /
+
 # Start container
 CMD ["/start.sh"]
 
